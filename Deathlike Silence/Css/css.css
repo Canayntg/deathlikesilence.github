@@ -1,0 +1,381 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    background-image: url(thumb-1920-96090.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 22px 9%;
+    background: rgba(0, 0, 0, 0.6);
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.nav-link,
+.drop-down li {
+    list-style: none;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.drop-down {
+    position: absolute;
+    background: rgba(12, 12, 12, 0.8);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    display: none;
+    z-index: 101;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.drop-down li {
+    padding: 12px 20px;
+    transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: rgba(255, 0, 0, 0.7);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.Albums:hover .drop-down,
+.Guitars:hover .drop-down,
+.Other:hover .drop-down {
+    display: block;
+}
+
+.drop-down li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 0, 0, 0.8);
+}
+
+#iletişim {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    list-style: none;
+    z-index: 1000;
+}
+
+#iletişim li {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iletişim li a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+#instagram a {
+    background-image: url('https://image.hurimg.com/i/hurriyet/75/0x0/5f4355c467b0a90ae02092d2.jpg');
+}
+
+#whatsapp a {
+    background-image: url('https://i.pinimg.com/736x/41/73/99/417399c4a6fc6b44e2cdbc22c9b1c54b.jpg');
+}
+
+#iletişim li a:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.navbar .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background-color: black;
+    border: 2px solid #555;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.navbar .btnLogin-popup:hover {
+    background-color: rgba(255, 0, 0, 0.6);
+    color: white;
+    border-radius: 10px;
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, height 0.3s ease;
+    overflow: hidden;
+    color: #fff;
+}
+
+.wrapper.active-popup {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.wrapper.active {
+    height: 520px;
+}
+
+.wrapper .form-box-login,
+.wrapper .form-box-Register {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.wrapper .form-box-login h2,
+.wrapper .form-box-Register h2 {
+    font-size: 2em;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.wrapper .form-box-login {
+    transition: transform 0.18s ease;
+    transform: translateY(0);
+    position: absolute;
+}
+
+.wrapper .form-box-Register {
+    transition: transform 0.18s ease;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box-login {
+    transform: translateX(-400px);
+}
+
+.wrapper.active .form-box-Register {
+    transform: translateX(0);
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #eeff00;
+    margin: 40px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #ffffff;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1em;
+    color: #ffffff;
+    line-height: 57px;
+}
+
+.remember-forgot {
+    font-size: 0.9em;
+    color: #fff;
+    font-weight: 500;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #000000;
+    font-weight: 500;
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    border: none;
+}
+
+.wrapper .icon-close:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 100px 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.product-card p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.product-card .price {
+    font-size: 1.2em;
+    color: #ffcc00;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-card button {
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
